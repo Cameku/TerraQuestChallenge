@@ -1,30 +1,30 @@
+import { Axios } from "axios";
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
-const company = {
-  Name: "Mercedes Bens",
-  Address: "123 The Hide",
-  Postcode: "MK14 8DD",
-  Website: "https://www.elevatecare.co.uk/",
-  Employees: "Buttom"
-};
 
-const CompanyCard = () => {
+
+const CompanyCard = ({ company }) => {
   return (
     <div>
-      <h1> Welcome to the CompanyCard page</h1>
+      {/* <h1> Welcome to the CompanyCard page</h1> */}
 
       <div className="container">
-        <div className="card">
-          <div>
-            <p>Name: {company.Name}</p>
-            <p>Address: {company.Address}</p>
-            <p>Post Code: {company.Postcode}</p>
-            <p>URL: {company.Website}</p>
-            <p><button className='myButton' onClick={() => {}}>View Employees</button></p>
-          </div>
+        <div className="myCard">
+          <Card style={{ width: "20rem" }}>
+            <Card.Body>
+              <Card.Title>Company card</Card.Title>
+              <br />
+              <br />
+              <Card.Text>Name: {company.name}</Card.Text>
+              <Card.Text>Address: {company.address}</Card.Text>
+              <Card.Text>Post Code: {company.url}</Card.Text>
+    
+              <Button variant="success">View Employees</Button>
+            </Card.Body>
+          </Card>
         </div>
-      </div>
-      <div>
       </div>
     </div>
   );

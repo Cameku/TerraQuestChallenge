@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-
+import Button  from 'react-bootstrap/Button';
 
 let apiString = [];
 const useLocalState = (key) => {
@@ -14,10 +14,10 @@ const useLocalState = (key) => {
         
        apiString.push(savedData);
 
-        return JSON.parse(savedData);
+       // return JSON.parse(savedData);
       }
     }
-    return JSON.parse(apiString);
+   // return JSON.parse(apiString);
   });
 
   useEffect(() => {
@@ -30,29 +30,33 @@ const useLocalState = (key) => {
 
 const Home = () => {
 
-  const [data, setData] =  useLocalState('key', "")
+  const [data, setData] =  useLocalState('key', "");
 
   const getData = () => {
     Axios.get("https://tqinterviewapi.azurewebsites.net/api/Companies/key").then((response) => {
-      
-      console.log(response);
       setData(response.data);
+      console.log(response.data);
     }); 
   }
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div  className="App">
       <div>
           <h1>Terra Quest React Challenge </h1>
         </div>
-      <button className='myButton' onClick={getData}>Get Data</button><br />
-      <div className='myData'>
+      <Button className='myButton' onClick={getData}>Click to get key</Button><br />
+      <div className='myData'><p>The key is: </p>
          {data}
       </div>
 
-      <button className='myButton' onClick={ () => { navigate("/Companies") }}>Companies</button>
-      <button className='myButton' onClick={ () => { navigate("/CompanyCard") }}>Company Card</button>
-      <button className='myButton' onClick={ () => { navigate("/CreateCompany") }}>Create Company</button>
+      <Button className='myButton' onClick={ () => { navigate("/Companies") }}>Companies</Button>
+      <Button className='myButton' onClick={ () => { navigate("/CompanyCard") }}>Company Card</Button>
+      <Button className='myButton' onClick={ () => { navigate("/CreateCompany") }}>Create Company</Button>
     </div>
   )
 }

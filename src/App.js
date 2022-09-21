@@ -1,5 +1,6 @@
 import "./App.css";
 //import { Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Companies from "./routes/Companies";
@@ -11,11 +12,11 @@ function App() {
   return (
     <Router>
       <nav className="nav">
-      <Link className="site-title" to="/"> Terra Quest</Link>
+      <Link className="site-title" to="/"> Terra Quest - Home</Link>
         <ul>
           <li><Link to="/Companies"> Companies</Link></li>
           <li><Link to="/CreateCompany"> CreateCompany</Link></li>
-          <li>  <Link to="/CompanyCard"> CompanyCard</Link></li>
+          <li><Link to="/CompanyCard"> CompanyCard</Link></li>
         </ul>
       </nav>
       <Routes>

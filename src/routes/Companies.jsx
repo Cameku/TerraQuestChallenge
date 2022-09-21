@@ -36,14 +36,9 @@ const Companies = () => {
         {/* <Button className='myButton' onClick={getCompanyData}>Get Companies</Button> */}
 
         <p>The list of companies</p>
-
-       
-
         {
           companyData?.length > 0 ? (
             <div className='container'>
-              {/* Singel company 
-            <CompanyCard companyList={companyList}/> */}
             {
               companyData.map((company) => (
                 <CompanyCard  company={company} />
