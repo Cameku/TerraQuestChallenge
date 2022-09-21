@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+//import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Companies from "./routes/Companies";
+import CreateCompany from "./routes/CreateCompany";
+import CompanyCard from "./views/CompanyCard";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav className="nav">
+      <Link className="site-title" to="/"> Terra Quest</Link>
+        <ul>
+          <li><Link to="/Companies"> Companies</Link></li>
+          <li><Link to="/CreateCompany"> CreateCompany</Link></li>
+          <li>  <Link to="/CompanyCard"> CompanyCard</Link></li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Companies" element={<Companies />} />
+        <Route path="/CreateCompany" element={<CreateCompany />} />
+        <Route path="/CompanyCard" element={<CompanyCard />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
 
